@@ -1,1 +1,1 @@
-# My website and data analysis portfolio
+# This is my website and data analysis portfolio. Within this website, I added an about me page and eventually some of my data anaylsis to share with everyone. 
