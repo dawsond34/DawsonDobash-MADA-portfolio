@@ -10,6 +10,11 @@ output:
 Hello my name is **Dawson Dobash** and I am a second year MS student at UGA for Epidemiology and Biostatistics with a concentration in Biostatistics. I grew up in Georgia and it was always a dream to come to UGA for college. I got my Bachelor's degree here at UGA in Statistics and I wanted to expand what I know into something I am passionate about which is helping people. I believe epidemiology and biostatistics is the perfect combination for someone who loves numbers and who wants to use what they find to help someone. 
 
 
+
+![](C:/Users/socce/Downloads/BIOS8060/DawsonDobash-MADA-portfolio/profile_picture.jpg)
+
+
+
 ### **Experience and Master's Thesis**
 
 I use R and SAS as my main programming languages for data analysis. I would call myself an intermediate in terms of knowledge within these languages but there is definitely a lot to learn still. 
@@ -27,3 +32,8 @@ For this course, my goals are to get more experience working on projects and app
 ### **Personal Facts**
 * I am a huge sports fan especially soccer. I grew up playing soccer since I was the age of 5. 
 * My fiancée and I just recently bought our first house together and plan on growing our family and becoming pet parents. 
+
+
+### **Interest in Data Analysis**
+
+As I said before, I am a huge sports fan and honestly that is the main reason I got into statistics. I always loved looking at the stats for teams or players especially from baseball as they have a lot of different types of statistics. [Here is a link](https://fivethirtyeight.com/sports/) to a website that one of my undergraduate professors shared to his students that shares some statistics on teams and players for the main leagues in the world such as NFL, MLB, world soccer leagues, and more. The statistics are under the sub-category of _INTERACTIVES_ on the side of the page. They predict games and seasons based on a variety of variables and thousands of simulations.
