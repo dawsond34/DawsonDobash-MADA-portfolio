@@ -1,16 +1,16 @@
 ---
-title: "My website and data analysis portfolio"
+title: "Dawson Dobash: My data analysis portfolio"
 output: 
   html_document:
     toc: FALSE
 ---
+## MADA 2021
+### Hello and welcome to my website
 
-# Hello
 
-### And hello again
-
-Welcome to **my website** and _data analysis portfolio._ 
+On this website you can look for my **_data analysis portfolio_**
+and other information about me
 
 
 * Please use the `Menu Bar` above to look around.
-* Have fun!
+

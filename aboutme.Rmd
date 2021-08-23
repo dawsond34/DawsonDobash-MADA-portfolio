@@ -6,5 +6,24 @@ output:
 ---
 
 
-Add some text and a figure describing myself.
 
+Hello my name is **Dawson Dobash** and I am a second year MS student at UGA for Epidemiology and Biostatistics with a concentration in Biostatistics. I grew up in Georgia and it was always a dream to come to UGA for college. I got my Bachelor's degree here at UGA in Statistics and I wanted to expand what I know into something I am passionate about which is helping people. I believe epidemiology and biostatistics is the perfect combination for someone who loves numbers and who wants to use what they find to help someone. 
+
+
+### **Experience and Master's Thesis**
+
+I use R and SAS as my main programming languages for data analysis. I would call myself an intermediate in terms of knowledge within these languages but there is definitely a lot to learn still. 
+
+In terms of previous research and training, I have not done that much stuff outside of school. I do plan on reaching out for some research opportunities soon to improve my experience in real-world projects. In terms of statistics and programming experience, I have worked with the Athens Clarke County Public Utilities Department to help identify if their new interface _WaterSmart_ was beneficial and worth the investment along with other questions they had. 
+
+For my Master's Thesis, I am currently working within the disaster epidemiology area and seeing the affects of tropical cyclones on the Madagascar population using DHS survey data.
+
+
+### **Goals**
+
+For this course, my goals are to get more experience working on projects and applying new techniques and skills I learned from this course into my daily coding. I also want to work more with Rmarkdown more becuase I know how powerful Rmarkdown can be and make multiple stepped projects all be within one interface of Rmarkdown. I also want to work with GitHub as I have never used it before. I have heard from a lot of people how great and useful it is. 
+
+
+### **Personal Facts**
+* I am a huge sports fan especially soccer. I grew up playing soccer since I was the age of 5. 
+* My fiancée and I just recently bought our first house together and plan on growing our family and becoming pet parents. 
