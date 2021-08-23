@@ -30,7 +30,7 @@ For my Master's Thesis, I am currently working within the disaster epidemiology 
 
 ### **Goals**
 
-For this course, my goals are to get more experience working on projects and applying new techniques and skills I learned from this course into my daily coding. I also want to work more with Rmarkdown because I know how powerful Rmarkdown can be and make multiple stepped projects all be within one interface of Rmarkdown. I also want to work with GitHub as I have never used it before. I have heard from a lot of people how great and useful it is. 
+For this course, my goals are to get more experience working on projects and applying new techniques and skills I learned from this course into my daily coding. I also want to work more with Rmarkdown because I know how powerful Rmarkdown can be and make multiple stepped projects all be within one interface of Rmarkdown. I also want to work with GitHub as I have never used it before. I have heard from a lot of people how great and useful it is.
 
 <br /> 
    
