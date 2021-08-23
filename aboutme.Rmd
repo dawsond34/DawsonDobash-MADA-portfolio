@@ -30,16 +30,16 @@ For my Master's Thesis, I am currently working within the disaster epidemiology 
 
 ### **Goals**
 
-For this course, my goals are to get more experience working on projects and applying new techniques and skills I learned from this course into my daily coding. I also want to work more with Rmarkdown more becuase I know how powerful Rmarkdown can be and make multiple stepped projects all be within one interface of Rmarkdown. I also want to work with GitHub as I have never used it before. I have heard from a lot of people how great and useful it is. 
+For this course, my goals are to get more experience working on projects and applying new techniques and skills I learned from this course into my daily coding. I also want to work more with Rmarkdown because I know how powerful Rmarkdown can be and make multiple stepped projects all be within one interface of Rmarkdown. I also want to work with GitHub as I have never used it before. I have heard from a lot of people how great and useful it is. 
 
 <br /> 
    
 ### **Personal Facts**
 * I am a huge sports fan especially soccer. I grew up playing soccer since I was the age of 5. 
-* My fiancée and I just recently bought our first house together and plan on growing our family and becoming pet parents. 
+* My fiancée and I just recently bought our first house together and plan on growing our family by becoming pet parents. 
 
 <br /> 
  
 ### **Interest in Data Analysis**
 
-As I said before, I am a huge sports fan and honestly that is the main reason I got into statistics. I always loved looking at the stats for teams or players especially from baseball as they have a lot of different types of statistics. [Here is a link](https://fivethirtyeight.com/sports/) to a website that one of my undergraduate professors shared to his students that shares some statistics on teams and players for the main leagues in the world such as NFL, MLB, world soccer leagues, and more. The statistics are under the sub-category of _INTERACTIVES_ on the side of the page. They predict games and seasons based on a variety of variables and thousands of simulations.
+As I said before, I am a huge sports fan and honestly that is the main reason I got into statistics. I always loved looking at the stats for teams or players especially from baseball as they have a lot of different types of statistics. [Here is a link](https://fivethirtyeight.com/sports/) to a website that one of my undergraduate professors shared to his students that shows some statistics on teams and players for the main leagues in the world such as NFL, MLB, world soccer leagues, and more. The statistics are under the sub-category of _INTERACTIVES_ on the side of the page. They predict games and seasons based on a variety of variables and thousands of simulations.
