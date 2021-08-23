@@ -7,7 +7,7 @@ output:
 
 
 
-Hello my name is **Dawson Dobash** and I am a second year MS student at UGA for Epidemiology and Biostatistics with a concentration in Biostatistics. I grew up in Georgia and it was always a dream to come to UGA for college. I got my Bachelor's degree here at UGA in Statistics and I wanted to expand what I know into something I am passionate about which is helping people. I believe epidemiology and biostatistics is the perfect combination for someone who loves numbers and who wants to use what they find to help someone. 
+Hello my name is **Dawson Dobash** and I am a second year MS student at UGA for Epidemiology and Biostatistics with a concentration in Biostatistics. I grew up in Georgia and it was always a dream to come to UGA for college. I got my Bachelor's degree here at UGA in Statistics and I wanted to expand what I know into something I am passionate about which is helping people. I believe epidemiology and biostatistics is the perfect combination for someone who loves numbers and who wants to use what they find to make an impact on society. 
 
 
 
