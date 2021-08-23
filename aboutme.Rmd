@@ -9,11 +9,13 @@ output:
 
 Hello my name is **Dawson Dobash** and I am a second year MS student at UGA for Epidemiology and Biostatistics with a concentration in Biostatistics. I grew up in Georgia and it was always a dream to come to UGA for college. I got my Bachelor's degree here at UGA in Statistics and I wanted to expand what I know into something I am passionate about which is helping people. I believe epidemiology and biostatistics is the perfect combination for someone who loves numbers and who wants to use what they find to make an impact on society. 
 
-
+<br /> 
+ 
 
 ![](C:/Users/socce/Downloads/BIOS8060/DawsonDobash-MADA-portfolio/profile_picture.jpg)
 
-
+<br /> 
+<br /> 
 
 ### **Experience and Master's Thesis**
 
@@ -23,17 +25,20 @@ In terms of previous research and training, I have not done that much stuff outs
 
 For my Master's Thesis, I am currently working within the disaster epidemiology area and seeing the affects of tropical cyclones on the Madagascar population using DHS survey data.
 
+<br /> 
 
 ### **Goals**
 
 For this course, my goals are to get more experience working on projects and applying new techniques and skills I learned from this course into my daily coding. I also want to work more with Rmarkdown more becuase I know how powerful Rmarkdown can be and make multiple stepped projects all be within one interface of Rmarkdown. I also want to work with GitHub as I have never used it before. I have heard from a lot of people how great and useful it is. 
 
-
+<br /> 
+   
 ### **Personal Facts**
 * I am a huge sports fan especially soccer. I grew up playing soccer since I was the age of 5. 
 * My fiancée and I just recently bought our first house together and plan on growing our family and becoming pet parents. 
 
-
+<br /> 
+ 
 ### **Interest in Data Analysis**
 
 As I said before, I am a huge sports fan and honestly that is the main reason I got into statistics. I always loved looking at the stats for teams or players especially from baseball as they have a lot of different types of statistics. [Here is a link](https://fivethirtyeight.com/sports/) to a website that one of my undergraduate professors shared to his students that shares some statistics on teams and players for the main leagues in the world such as NFL, MLB, world soccer leagues, and more. The statistics are under the sub-category of _INTERACTIVES_ on the side of the page. They predict games and seasons based on a variety of variables and thousands of simulations.
