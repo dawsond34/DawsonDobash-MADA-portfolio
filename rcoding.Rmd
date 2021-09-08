@@ -5,6 +5,105 @@ output:
     toc: FALSE
 ---
 
-This will contain the future R coding exercise.
+```{r read in libraries}
+#load dslabs and tidyverse package
+library("dslabs")
+library("tidyverse")
 
+#look at help file for gapminder data
+help(gapminder)
 
+#get an overview of data structure
+str(gapminder)
+
+#get a summary of data
+summary(gapminder)
+
+#determine the type of object gapminder is
+class(gapminder)
+```
+
+```{r creating new objects}
+#This is filtering the data set into only those who are on the continent of Africa
+africadata <- gapminder %>% dplyr::filter(continent == "Africa")
+
+#We are looking at our new object's data structure
+str(africadata)
+
+#This is looking at a summary of the data for africadata
+summary(africadata)
+
+#This is making subsets of our africadata to only have two variables for each
+#infmort only includes infant mortality and life_expectancy from africadata
+infmort <- africadata %>% dplyr::select(infant_mortality, life_expectancy)
+
+#pop only includes population size and life_expectancy from africadata 
+pop <- africadata %>% dplyr::select(population, life_expectancy)
+
+#We are looking at the data and data structure within both of our new object infmort
+#infmort contains the 2907 observations it needs
+str(infmort)
+summary(infmort)
+
+#We are looking at the data and data structure within both of our new object pop
+#pop contains 2907 observations
+str(pop)
+summary(pop)
+```
+
+From the scatter plots, the trend of streaks we are seeing is due to multiple observations from one country by year
+
+```{r scatterplots}
+#Scatter plot made using ggplot showing the relationship between infant mortality and life expectancy
+ggplot(infmort, aes(x=infant_mortality, y=life_expectancy)) + geom_point()
+
+#Scatter plot was made by using ggplot showing the relationship between population size and life expectancy with a log scale for population
+ggplot(pop, aes(x=population, y=life_expectancy)) + geom_point() + scale_x_continuous(trans = "log2")
+```
+
+Based on looking at the data structure, there are 51 observations with 9 variables
+
+```{r filter year 2000}
+#Filtering to see which years the NA data are and to see there is no NA's for the year 2000
+africadata %>% dplyr::filter(is.na(infant_mortality)) %>% dplyr::select(year) %>% count(year)
+
+#Based on the above code, we are filtering africadata to only looking at year 2000 since there is no NA's present
+africadata_2000 <- africadata %>% dplyr::filter(year == 2000)
+
+#Looking at the data structure of africadata_2000
+str(africadata_2000)
+
+#Looking at a summary of the data of africadata_2000
+summary(africadata_2000)
+```
+
+According to the scatter plots, infant mortality and life expectancy has a negative correlation while population size and life expectancy has no correlation that we can see. 
+
+```{r scatter plots pt.2}
+#Scatter plot for infant mortality and life expectancy based only in the year 2000
+ggplot(africadata_2000, aes(x=infant_mortality, y=life_expectancy)) + geom_point()
+
+#Scatter plot for population size and life expectancy based only in the year 2000 with a log scale for population
+ggplot(africadata_2000, aes(x=population, y=life_expectancy)) + geom_point() + scale_x_continuous(trans = "log2")
+```
+
+Below I will fit two linear models.
+
+```{r linear models}
+#A linear model for the africadata_2000 where infant mortality is predicting life expectancy
+fit1 = lm(life_expectancy~infant_mortality, data=africadata_2000)
+
+#A linear model for the africadata_2000 where population size is predicting life expectancy
+fit2 = lm(life_expectancy~population, data=africadata_2000)
+
+#A summary table displaying information about the linear model between life expectancy and infant mortality
+summary(fit1)
+
+#A summary table displaying information about the linear model between life expectancy and population size
+summary(fit2)
+
+```
+
+From fit1, we can see that similar to the scatter plot, there is a negative correlation between life expectancy and infant mortality based on the negative estimate for infant_mortality. This estimate is also significant based on the p-value of 2.83e-08 because it is below the common threshold of a p-value of 0.05. This means infant mortality is a significant predictor for life expectancy. For every one unit increase in infant mortality, the life expectancy will decrease 0.189 years.
+
+From fit2, we can see based on the p-value of 0.616, compared to 0.05, that there is no significant linear relationship between the population size and life expectancy. We can see this also based on the estimate for population. It is a value very close to 0. 
