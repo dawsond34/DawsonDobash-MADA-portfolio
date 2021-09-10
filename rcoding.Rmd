@@ -107,3 +107,67 @@ summary(fit2)
 From fit1, we can see that similar to the scatter plot, there is a negative correlation between life expectancy and infant mortality based on the negative estimate for infant_mortality. This estimate is also significant based on the p-value of 2.83e-08 because it is below the common threshold of a p-value of 0.05. This means infant mortality is a significant predictor for life expectancy. For every one unit increase in infant mortality, the life expectancy will decrease 0.189 years.
 
 From fit2, we can see based on the p-value of 0.616, compared to 0.05, that there is no significant linear relationship between the population size and life expectancy. We can see this also based on the estimate for population. It is a value very close to 0. 
+
+#*Additional analysis - Carter Coleman, Group 2*
+
+#To further explore what factors affect life expectancy across African countries in the year 2,000, create a new data set from "africadata_2000" that contains "country", "life expectancy" and "gdp".
+```{r}
+africadata_2000_life_gdp <- africadata_2000 %>%
+  select("country", "life_expectancy", "gdp")
+```
+
+#Repeat the last step, except with "Country", "life expectancy", and "Fertility".
+```{r}
+africadata_2000_life_fert <- africadata_2000 %>%
+  select("country", "life_expectancy", "fertility")
+```
+
+#Create a plot of life expectancy as the output and country's gdp as the input. Note that whe applied a log(10)scale to gdp to clean up the X-axis a little bit.
+```{r}
+ggplot(data = africadata_2000_life_gdp) + 
+  geom_point(mapping = aes(log10(gdp), life_expectancy))
+```
+
+#Repeat the last step with life expectancy and fertility. *Do not apply the log(10) scale to fertility*
+```{r}
+ggplot(data = africadata_2000_life_fert) + 
+  geom_point(mapping = aes((fertility), life_expectancy))
+```
+
+#Now that we have some plots, we can see some loose trends: as gdp increses, life expectancy increases (positive relationship); As fertility increases, life expectancy decreases. Since these seem to be some interesting results considering how resource availability affects a country's average life expectancy, fit a linear model to the data sets.
+
+#gdp and life expectancy:
+```{r}
+fit_gdp_life <- lm(life_expectancy~gdp, data = africadata_2000_life_gdp)
+summary(fit_gdp_life)
+```
+#What we see is that the p-value for the relationship between life expectancy and gdp is <0.05 (p-value = 0.0152) indicating that the relationship is significant. Additionally, the slope (slope = 1.168e-10) of the linear fit shows a positive correltion. However, an R^2 value of 0.096 shows that the linear model does not explain that much of the data. This means while a significant relationship exists between gdp and life expectancy, prediction outside the data set is limited.
+
+
+
+
+#fertility and life expectancy:
+```{r}
+fit_fert_life <- lm(life_expectancy~fertility, data = africadata_2000_life_fert)
+summary(fit_fert_life)
+```
+#The analysis shows a significant, negative correlation between fertility and life expectancy (p-value = 1.568e-07; slope = -3.8231). In this analysis, R^2 = 0.4211. This means that the linear model explains the data better than that of gdp and life expectancy data. I would argue that because there are so many factors that affect life expectancy, having a R^2 of ~0.4 makes this linear model a decent predictor of the the affect of fertility on life expectancy outside the parameters of this data set.
+
+#Through this exercise, we found three significant relationships that affect life expectancy. Those input variables were infant mortality, fertility, and gdp. Since all those variables do not affect life expectancy in a vacuum, let's look at the relationship of all three concurrently using a multiple regression analysis.
+
+#Use the africa_2000 data set to create a new data set with the variables: country, life expectancy, infant mortality, gdp, and fertility.
+```{r}
+Multi_africa_2000 <- africadata_2000 %>%
+  select("country", "life_expectancy", "fertility", "gdp", "infant_mortality")
+```
+
+#*We won't plot this because there are >3 axies being analysed*
+
+#Next, run a multiple regression analysis on the newly created data set with your inputs being: gdp, infant mortality, and fertility; and your output being life expectancy.
+```{r}
+Multi_fit <- lm(life_expectancy ~ gdp + fertility + infant_mortality, data=Multi_africa_2000)
+summary(Multi_fit)
+```
+#The multiple regression indicated that the model explained 0.4704 of the data. Meaning that, with a p-value = 3.058e-7, the combunation of inputs in the model were a significant predictor of life expectancy. Individually, infant mortality contributed significantly to the model (slope = -1.258e-01, p = 0.0163), gdp (slope = 2.909e-11, p = 0.4641) and fertility (slope = -1.423, p = 0.2074) did not. 
+
+
