@@ -66,9 +66,9 @@ plot5=ggplot(clean_data, aes(fill=voter_category, x=educ, y=weight)) + geom_bar(
 joint_plot = ggarrange(plot1, plot4, plot3, plot5, plot2, ncol=3, nrow=2, common.legend = TRUE, legend="top" )
 
 #annotate_figure will give the overall visual with a main title and a subtitle below the visual. 
-annotate_figure(joint_plot, top = text_grob("Those who almost vote and those who sometimes vote aren't that different \n Demographic information of survey respondents, by voting history"), bottom = text_grob("We used a voter file combined with survey responses to classify voters. Rarely or never vote: voted in no more than one election. Sometimes vote: voted in at least two elections but not all (or all but one). Almost always vote: voted in all for all but one election.", size=8))
+annotate_figure(joint_plot, top = text_grob("Those who almost vote and those who sometimes vote aren't that different \n Demographic information of survey respondents, by voting history"), bottom = text_grob("We used a voter file combined with survey responses to classify voters. Rarely or never vote: voted in no more than one election. \n Sometimes vote: voted in at least two elections but not all (or all but one). Almost always vote: voted in all for all but one election.", size=8))
 ```
 
 <br /> 
 
-Most of the visual looks almost exactly the same except the color. I tried to figure out the color but I could not figure that out. I feel like I have changed colors before but for some reason I could not figure it out for this exercise. Therefore, if anyone could suggest to me ways to change the color that would be great! 
+Most of the visual looks roughly the same except the color and the size of the charts (I dont know exactly how to change the size of the figures). I tried to figure out the color but I could not figure that out. I feel like I have changed colors before but for some reason I could not figure it out for this exercise. Therefore, if anyone could suggest to me ways to change the color that would be great! 
