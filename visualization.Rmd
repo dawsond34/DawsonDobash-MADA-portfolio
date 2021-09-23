@@ -18,9 +18,10 @@ Before I can work on the data, I have to import the data. Usually I am able to h
 #I am reading in the tidyverse library.
 library(tidyverse)
 library(Hmisc)
-library(gridExtra)
+#library(gridExtra)
 library(scales)
 library(ggpubr)
+#library(patchwork)
 
 #This is reading in the raw data
 file <- "https://raw.githubusercontent.com/fivethirtyeight/data/master/non-voters/nonvoters_data.csv"
@@ -52,18 +53,18 @@ The other thing I wanted to figure out was how to put a title over all of the fi
 ```{r plots}
 #The next five ggplot commands create the specific figures. Each ggplot are all similar just using different independent variables. I included specific orders for levels of categories, changed the look of the plot to vertical to horizontal, and making the y-axis a percentage instead of decimals.
 
-plot1=ggplot(clean_data, aes(fill=voter_category, x=race, y=weight)) + geom_bar(position="fill", stat="identity") + coord_flip() + scale_y_continuous(labels=scales::percent) +xlab(label = "") + ylab(label = "") + ggtitle("Race") + scale_x_discrete(limits = c("White","Other/Mixed","Hispanic", "Black")) + scale_fill_discrete(limit = c("RARELY OR NEVER VOTE", "SOMETIMES VOTE", "ALMOST ALWAYS VOTE"))
+plot1=ggplot(clean_data, aes(fill=voter_category, x=race, y=weight)) + geom_bar(position="fill", stat="identity") + coord_flip() + scale_y_continuous(labels=scales::percent) +xlab(label = "") + ylab(label = "") + ggtitle("Race") + scale_x_discrete(limits = c("White","Other/Mixed","Hispanic", "Black")) + scale_fill_manual(values = c( "orange", "mediumorchid1","darkorchid3"))
 
-plot2=ggplot(clean_data, aes(fill=voter_category, x=Party_ID, y=weight)) + geom_bar(position="fill", stat="identity") + coord_flip()+ scale_y_continuous(labels=scales::percent)+xlab(label = "") + ylab(label = "") + ggtitle("Party ID") + scale_x_discrete(limits = c("Republican","Independent/Neither","Democratic")) + scale_fill_discrete(limit = c("RARELY OR NEVER VOTE", "SOMETIMES VOTE", "ALMOST ALWAYS VOTE"))
+plot2=ggplot(clean_data, aes(fill=voter_category, x=Party_ID, y=weight)) + geom_bar(position="fill", stat="identity") + coord_flip()+ scale_y_continuous(labels=scales::percent)+xlab(label = "") + ylab(label = "") + ggtitle("Party ID") + scale_x_discrete(limits = c("Republican","Independent/Neither","Democratic")) + scale_fill_manual(values = c( "orange", "mediumorchid1","darkorchid3"))
 
-plot3=ggplot(clean_data, aes(fill=voter_category, x=age_cat, y=weight)) + geom_bar(position="fill", stat="identity") + coord_flip()+ scale_y_continuous(labels=scales::percent)+xlab(label = "") + ylab(label = "") + ggtitle("Age") + scale_x_discrete(limits = c("65+","50-64","35-49", "26-34")) + scale_fill_discrete(limit = c("RARELY OR NEVER VOTE", "SOMETIMES VOTE", "ALMOST ALWAYS VOTE"))
+plot3=ggplot(clean_data, aes(fill=voter_category, x=age_cat, y=weight)) + geom_bar(position="fill", stat="identity") + coord_flip()+ scale_y_continuous(labels=scales::percent)+xlab(label = "") + ylab(label = "") + ggtitle("Age") + scale_x_discrete(limits = c("65+","50-64","35-49", "26-34")) + scale_fill_manual(values = c( "orange", "mediumorchid1","darkorchid3"))
 
-plot4=ggplot(clean_data, aes(fill=voter_category, x=income_cat, y=weight)) + geom_bar(position="fill", stat="identity") + coord_flip()+ scale_y_continuous(labels=scales::percent)+xlab(label = "") + ylab(label = "") + ggtitle("Income") + scale_x_discrete(limits = c("$125k or more","$75-125k","$40-75k", "Less than $40k")) + scale_fill_discrete(limit = c("RARELY OR NEVER VOTE", "SOMETIMES VOTE", "ALMOST ALWAYS VOTE"))
+plot4=ggplot(clean_data, aes(fill=voter_category, x=income_cat, y=weight)) + geom_bar(position="fill", stat="identity") + coord_flip()+ scale_y_continuous(labels=scales::percent)+xlab(label = "") + ylab(label = "") + ggtitle("Income") + scale_x_discrete(limits = c("$125k or more","$75-125k","$40-75k", "Less than $40k")) + scale_fill_manual(values = c( "orange", "mediumorchid1","darkorchid3"))
 
-plot5=ggplot(clean_data, aes(fill=voter_category, x=educ, y=weight)) + geom_bar(position="fill", stat="identity") + coord_flip()+ scale_y_continuous(labels=scales::percent)+xlab(label = "") + ylab(label = "") + ggtitle("Education") + scale_x_discrete(limits = c("College","Some college","High school or less")) + scale_fill_discrete(limit = c("RARELY OR NEVER VOTE", "SOMETIMES VOTE", "ALMOST ALWAYS VOTE"))
+plot5=ggplot(clean_data, aes(fill=voter_category, x=educ, y=weight)) + geom_bar(position="fill", stat="identity") + coord_flip()+ scale_y_continuous(labels=scales::percent)+xlab(label = "") + ylab(label = "") + ggtitle("Education") + scale_x_discrete(limits = c("College","Some college","High school or less")) + scale_fill_manual(values = c( "orange", "mediumorchid1","darkorchid3"))
 
 #ggarange will show the five figure in the same position as the original visual. It also created a common legend for the fill variable. 
-joint_plot = ggarrange(plot1, plot4, plot3, plot5, plot2, ncol=3, nrow=2, common.legend = TRUE, legend="top" )
+joint_plot = ggarrange(plot1, plot4, plot3, plot5, plot2,ncol=3, nrow=2, common.legend = TRUE, legend="top", widths = c(2,2,1.4), heights = c(4.1,4) )
 
 #annotate_figure will give the overall visual with a main title and a subtitle below the visual. 
 annotate_figure(joint_plot, top = text_grob("Those who almost vote and those who sometimes vote aren't that different \n Demographic information of survey respondents, by voting history"), bottom = text_grob("We used a voter file combined with survey responses to classify voters. Rarely or never vote: voted in no more than one election. \n Sometimes vote: voted in at least two elections but not all (or all but one). Almost always vote: voted in all for all but one election.", size=8))
@@ -71,4 +72,4 @@ annotate_figure(joint_plot, top = text_grob("Those who almost vote and those who
 
 <br /> 
 
-Most of the visual looks roughly the same except the color and the size of the charts (I dont know exactly how to change the size of the figures). I tried to figure out the color but I could not figure that out. I feel like I have changed colors before but for some reason I could not figure it out for this exercise. Therefore, if anyone could suggest to me ways to change the color that would be great! 
+Most of the visual looks roughly the same except the size of the charts (I dont know exactly how to change the size of the figures).
