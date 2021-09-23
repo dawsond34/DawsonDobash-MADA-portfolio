@@ -21,7 +21,7 @@ library(Hmisc)
 #library(gridExtra)
 library(scales)
 library(ggpubr)
-#library(patchwork)
+library(patchwork)
 
 #This is reading in the raw data
 file <- "https://raw.githubusercontent.com/fivethirtyeight/data/master/non-voters/nonvoters_data.csv"
@@ -64,12 +64,16 @@ plot4=ggplot(clean_data, aes(fill=voter_category, x=income_cat, y=weight)) + geo
 plot5=ggplot(clean_data, aes(fill=voter_category, x=educ, y=weight)) + geom_bar(position="fill", stat="identity") + coord_flip()+ scale_y_continuous(labels=scales::percent)+xlab(label = "") + ylab(label = "") + ggtitle("Education") + scale_x_discrete(limits = c("College","Some college","High school or less")) + scale_fill_manual(values = c( "orange", "mediumorchid1","darkorchid3"))
 
 #ggarange will show the five figure in the same position as the original visual. It also created a common legend for the fill variable. 
-joint_plot = ggarrange(plot1, plot4, plot3, plot5, plot2,ncol=3, nrow=2, common.legend = TRUE, legend="top", widths = c(2,2,1.4), heights = c(4.1,4) )
+joint_plot = ggarrange(plot1, plot4, plot3, plot5, plot2,ncol=3, nrow=2, common.legend = TRUE, legend="top", widths = c(1.9,2,1.7), heights = c(4,4.1) )
+
+
+#comb_plot = (plot1|plot4|plot3)/(plot5|plot2)& theme(legend.position = "top")
+#comb_plot+plot_layout(guides = "collect")+plot_annotation(title = "Those who almost vote and those who sometimes vote aren't that different \n Demographic information of survey respondents, by voting history", caption = "We used a voter file combined with survey responses to classify voters. Rarely or never vote: voted in no more than one \n election. Sometimes vote: voted in at least two elections but not all. Almost always vote: voted in all for all but one election.")
 
 #annotate_figure will give the overall visual with a main title and a subtitle below the visual. 
-annotate_figure(joint_plot, top = text_grob("Those who almost vote and those who sometimes vote aren't that different \n Demographic information of survey respondents, by voting history"), bottom = text_grob("We used a voter file combined with survey responses to classify voters. Rarely or never vote: voted in no more than one election. \n Sometimes vote: voted in at least two elections but not all (or all but one). Almost always vote: voted in all for all but one election.", size=8))
+annotate_figure(joint_plot, top = text_grob("Those who almost vote and those who sometimes vote aren't that \n different Demographic information of survey respondents, by voting history"), bottom = text_grob("We used a voter file combined with survey responses to classify voters. Rarely or never vote: voted in no more than one election. \n Sometimes vote: voted in at least two elections but not all (or all but one). Almost always vote: voted in all for all but one election.", size=8))
 ```
 
 <br /> 
 
-Most of the visual looks roughly the same except the size of the charts (I dont know exactly how to change the size of the figures).
+Most of the visual looks roughly the same except the size of the charts (I tried to use the patchwork package but the legend for the fill variables were going in the wrong position under the individual titles. I went back to ggarange and tried to change the sizes as much as possible. 
