@@ -64,7 +64,7 @@ plot4=ggplot(clean_data, aes(fill=voter_category, x=income_cat, y=weight)) + geo
 plot5=ggplot(clean_data, aes(fill=voter_category, x=educ, y=weight)) + geom_bar(position="fill", stat="identity") + coord_flip()+ scale_y_continuous(labels=scales::percent)+xlab(label = "") + ylab(label = "") + ggtitle("Education") + scale_x_discrete(limits = c("College","Some college","High school or less")) + scale_fill_manual(values = c( "orange", "mediumorchid1","darkorchid3"))
 
 #ggarange will show the five figure in the same position as the original visual. It also created a common legend for the fill variable. 
-joint_plot = ggarrange(plot1, plot4, plot3, plot5, plot2,ncol=3, nrow=2, common.legend = TRUE, legend="top", widths = c(1.9,2,1.7), heights = c(4,4.1) )
+joint_plot = ggarrange(plot1, plot4, plot3, plot5, plot2,ncol=3, nrow=2, common.legend = TRUE, legend="top", widths = c(1.9,2,1.6), heights = c(4.1,4) )
 
 
 #comb_plot = (plot1|plot4|plot3)/(plot5|plot2)& theme(legend.position = "top")
@@ -76,4 +76,4 @@ annotate_figure(joint_plot, top = text_grob("Those who almost vote and those who
 
 <br /> 
 
-Most of the visual looks roughly the same except the size of the charts (I tried to use the patchwork package but the legend for the fill variables were going in the wrong position under the individual titles. I went back to ggarange and tried to change the sizes as much as possible. Again, if there is any suggestions on the sizing of the figures using ggarrange, please let me know. 
+Most of the visual looks roughly the same except the size of the charts (I tried to use the patchwork package but the legend for the fill variables were going in the wrong position under the individual titles. I went back to ggarrange and tried to change the sizes as much as possible. Again, if there is any suggestions on the sizing of the figures using ggarrange, please let me know. 
