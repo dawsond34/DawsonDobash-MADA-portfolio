@@ -5,5 +5,146 @@ output:
     toc: FALSE
 ---
 
-This will contain the future Tidy Tuesday exercise.
+## **Reading in Packages**
 
+```{r Reading in Data}
+#Read in libraries
+library(readr)
+library(tidytuesdayR)
+library(nberwp)
+library(tidyverse)
+library(forcats)
+
+# Get the Data from tidytuesday
+papers <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/papers.csv')
+authors <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/authors.csv')
+programs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/programs.csv')
+paper_authors <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_authors.csv')
+paper_programs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_programs.csv')
+```
+
+## **Creating local copies of each data set and combining datasets**
+
+```{r Combining datasets}
+#This will create copies of each dataset into my own folder for the online portfolio
+papers %>% 
+ write_csv("data/tidy_tuesday/papers.csv")
+
+authors %>% 
+  write_csv("data/tidy_tuesday/authors.csv")
+
+programs %>% 
+  write_csv("data/tidy_tuesday/programs.csv")
+
+paper_authors %>% 
+  write_csv('data/tidy_tuesday/paper_authors.csv')
+
+paper_programs %>% 
+  write_csv("data/tidy_tuesday/paper_programs.csv")
+
+#We are joining the datasets into one
+joined_df <- left_join(papers, paper_authors) %>% 
+  left_join(authors) %>% 
+  left_join(paper_programs) %>% 
+  left_join(programs)%>% 
+  mutate(
+    catalogue_group = str_sub(paper, 1, 1),
+    catalogue_group = case_when(
+      catalogue_group == "h" ~ "Historical",
+      catalogue_group == "t" ~ "Technical",
+      catalogue_group == "w" ~ "General"
+    ),
+    .after = paper
+  ) 
+
+joined_df %>% 
+  write_csv("data/tidy_tuesday/joined_df.csv")
+```
+
+## **Now that we have the data read in, time to explore the data**
+```{r exploring data}
+#Gives a snapshot of the data
+glimpse(joined_df)
+
+#Summarizing variables to see the distribution of some variables
+summary(as.factor(joined_df$catalogue_group))
+
+summary(as.factor(joined_df$program_category))
+
+summary(as.factor(joined_df$program_desc))
+
+summary(joined_df$year)
+```
+
+From looking at the data, almost all of the papers are under the general catalogue group. We can also see that most papers are within the Micro program with some missing data. 
+
+If we look at the distributions of the year a paper was published/used, it looks like around half of the papers are within the last 10 years. 
+
+I want to group the years into decades just to see if there is any trends with the amounto of papers or if the program type switched at a distinct decade. 
+
+## **Visualization of Decades**
+```{r some visualization of year}
+#Creating a new variable that categorizes the years
+data2 <- joined_df %>% mutate(year_cat= ifelse(year>=1973 & year<1980, "70's", ifelse(year>=1980 & year<1990, "80's",ifelse(year>=1990 & year<2000, "90's", ifelse(year>=2000 & year<2010, "2000's", ifelse(year>=2010, "2010's-2021", "")))))) 
+
+#This makes the year categories factors so there is a distinct order
+data2$year_cat = factor(data2$year_cat, levels = c("2010's-2021", "2000's", "90's", "80's", "70's"))
+
+#Summarizing the new variable
+summary(as.factor(data2$year_cat))
+
+#barplot of programs with the distribution of years within each program
+data2 %>% filter(!is.na(program_desc)) %>% ggplot(aes(fill=as.factor(year_cat), x=forcats::fct_infreq(program_desc))) + geom_bar() + coord_flip() +labs(title = "Stacked Barplot of Counts of Programs Written \n (by Decade)", fill="Decade") +xlab("Programs") 
+
+#A proportion table showing the proportions of program categories by decade
+prop.table(table(data2$program_category, data2$year_cat), margin=2)
+```
+
+We can see that most papers (by quantity) was used during the last decade meaning more research and papers are being used as years pass. In looking at the proportion table, we can see that finance papers were not being written or referenced to in the 70's and 80's compared to the Macro and Micro papers. Throughout all of the decades, Micro papers are more prevalent except in the 90's where macro and international papers were more common.
+
+In looking at the barplot, we can see overall Labor Studies, Public Economics, and Economic Fluctuations and Growth are the most common. We can also see that all of these programs were talked about in papers throughout each decade. However, one program looks to only have been written about in the past decade. This program is called Development Economics. 
+
+
+## **More Exploration Plots**
+After looking at decades, I want to look at just program information.
+
+```{r more visualization of programs}
+#Barplot of program categories
+data2 %>% filter(!is.na(program_category)) %>% ggplot(aes(program_category)) + geom_bar()
+
+#Stacked Barplot of programs by catalogue group
+data2 %>% filter(!is.na(program_desc)) %>% ggplot(aes(fill=catalogue_group, x=forcats::fct_infreq(program_desc))) + geom_bar() + coord_flip() + labs(title = "Stacked Barplot of Counts of Programs Written \n (by Catalogue)", fill="Catalogue") +xlab("Programs") 
+
+#Proportions table of program category and catalogue group, margined by catalogue
+prop.table(table(data2$program_category, data2$catalogue_group), margin=2)
+```
+
+Just like in the previous plots, we can see that Micro programs were written about the most.
+
+For the stacked barplot, I just wanted to see if there were certain programs that were written in historical or technical catalogue more often than others. But as you can see, the amounts are so small that you can barely see the two catalogues. 
+
+Since there is barely any distinction, I wanted to look at the distribution of the categories of the programs and the catalogue groups. We can see that most technical catalogues are about Macro and International papers. Also the historical catalogue houses almost only Micro papers with only 4.5% written over Marco/International. 
+
+
+## **Distinct Papers**
+```{r visualization on distinct papers}
+#Creates a new dataset only including distinct papers and no duplicates of papers.
+distinct_paper <- data2 %>% distinct(paper, .keep_all = TRUE)
+
+#Shows a snapshot of the dataset
+glimpse(distinct_paper)
+
+#Shows the top authors who has written/contributed to the most papers
+distinct_paper %>% group_by(name) %>% summarise(Count = n()) %>% arrange(desc(Count))
+
+#Stacked barplot of programs by year with only looking at single papers.
+distinct_paper %>% filter(!is.na(program_desc)) %>% ggplot(aes(fill=as.factor(year_cat), x=forcats::fct_infreq(program_desc))) + geom_bar() + coord_flip() + labs(title = "Stacked Barplot of Counts of Programs Written \n (by Year for Distinct Papers)", fill="Decade") +xlab("Programs") 
+
+#Shows how many papers were written per decade
+table(distinct_paper$year_cat)
+
+```
+
+I finally wanted to look at distinct papers and not referenced more than once. We can see that Joshua Aizenman written/contributed to the most papers. When looking at the stacked barplot, we can see that there is still a large amount of distinct papers in the field of Economic Fluctuations and Growth. We can also see in general that the distribution of papers written is more spread out when only looking at distinct papers compared to all papers referenced in a aobve stacked barplot. This means there are substantially more papers that were reference from the past decade than the other decades. 
+
+Finally if we look at the table displaying the number of distinct papers within each decade, we can see that there is a majority of papers from the past decade but the distribution overall is more comparative.
