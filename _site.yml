@@ -17,8 +17,10 @@ navbar:
           href: ./rcoding.html
         - text: "Visualization"
           href: ./visualization.html
-        - text: "Tidy Tuesday"
+        - text: "Tidy Tuesday Exercise"
           href: ./tidytuesday.html
+        - text: "Tidy Tuesday 2 Exercise"
+          href: ./tidytuesday2.html
   right:
     - icon: fa-github fa-lg
       href: https://github.com/dawsond34/DawsonDobash-MADA-portfolio/
