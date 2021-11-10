@@ -21,6 +21,14 @@ navbar:
           href: ./tidytuesday.html
         - text: "Tidy Tuesday 2 Exercise"
           href: ./tidytuesday2.html
+        - text: "Nausea/Body Temperature: Exploration"
+          href: ./exploration.html
+        - text: "Nausea/Body Temperature: Model Fitting using Tidymodels"
+          href: ./analysisscript-rmd.html
+        - text: "Nausea/Body Temperature: Cross-Validation, ROC-Auc, and RMSE"
+          href: ./analysisscript_pt2.html
+        - text: "Nausea/Body Temperature: Machine Learning Modeling"
+          href: ./analysisscript_pt3.html
   right:
     - icon: fa-github fa-lg
       href: https://github.com/dawsond34/DawsonDobash-MADA-portfolio/
