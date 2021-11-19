@@ -388,17 +388,12 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Read in libraries</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytuesdayR)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nberwp)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;nberwp&#39;</code></pre>
-<pre><code>## The following objects are masked _by_ &#39;.GlobalEnv&#39;:
-## 
-##     authors, paper_authors, paper_programs, papers, programs</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the Data from tidytuesday</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>papers <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/papers.csv&#39;</span>)</span></code></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nberwp)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the Data from tidytuesday</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>papers <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/papers.csv&#39;</span>)</span></code></pre></div>
 <pre><code>## Rows: 29434 Columns: 4</code></pre>
 <pre><code>## -- Column specification --------------------------------------------------------
 ## Delimiter: &quot;,&quot;
@@ -407,7 +402,7 @@ $(document).ready(function () {
 <pre><code>## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>authors <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/authors.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>authors <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/authors.csv&#39;</span>)</span></code></pre></div>
 <pre><code>## Rows: 15437 Columns: 4</code></pre>
 <pre><code>## -- Column specification --------------------------------------------------------
 ## Delimiter: &quot;,&quot;
@@ -415,7 +410,7 @@ $(document).ready(function () {
 <pre><code>## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>programs <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/programs.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>programs <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/programs.csv&#39;</span>)</span></code></pre></div>
 <pre><code>## Rows: 21 Columns: 3</code></pre>
 <pre><code>## -- Column specification --------------------------------------------------------
 ## Delimiter: &quot;,&quot;
@@ -423,7 +418,7 @@ $(document).ready(function () {
 <pre><code>## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>paper_authors <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_authors.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>paper_authors <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_authors.csv&#39;</span>)</span></code></pre></div>
 <pre><code>## Rows: 67090 Columns: 2</code></pre>
 <pre><code>## -- Column specification --------------------------------------------------------
 ## Delimiter: &quot;,&quot;
@@ -431,7 +426,7 @@ $(document).ready(function () {
 <pre><code>## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>paper_programs <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_programs.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>paper_programs <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_programs.csv&#39;</span>)</span></code></pre></div>
 <pre><code>## Rows: 53996 Columns: 2</code></pre>
 <pre><code>## -- Column specification --------------------------------------------------------
 ## Delimiter: &quot;,&quot;
@@ -442,47 +437,47 @@ $(document).ready(function () {
 </div>
 <div id="creating-local-copies-of-each-data-set-and-combining-datasets" class="section level2">
 <h2><strong>Creating local copies of each data set and combining datasets</strong></h2>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This will create copies of each dataset into my own folder for the online portfolio</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>papers <span class="sc">%&gt;%</span> </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">write_csv</span>(<span class="st">&quot;data/tidy_tuesday/papers.csv&quot;</span>)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>authors <span class="sc">%&gt;%</span> </span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/tidy_tuesday/authors.csv&quot;</span>)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>programs <span class="sc">%&gt;%</span> </span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/tidy_tuesday/programs.csv&quot;</span>)</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>paper_authors <span class="sc">%&gt;%</span> </span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&#39;data/tidy_tuesday/paper_authors.csv&#39;</span>)</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>paper_programs <span class="sc">%&gt;%</span> </span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/tidy_tuesday/paper_programs.csv&quot;</span>)</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="co">#We are joining the datasets into one</span></span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>joined_df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(papers, paper_authors) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(authors) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(paper_programs) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(programs)<span class="sc">%&gt;%</span> </span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">catalogue_group =</span> <span class="fu">str_sub</span>(paper, <span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">catalogue_group =</span> <span class="fu">case_when</span>(</span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>      catalogue_group <span class="sc">==</span> <span class="st">&quot;h&quot;</span> <span class="sc">~</span> <span class="st">&quot;Historical&quot;</span>,</span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>      catalogue_group <span class="sc">==</span> <span class="st">&quot;t&quot;</span> <span class="sc">~</span> <span class="st">&quot;Technical&quot;</span>,</span>
-<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>      catalogue_group <span class="sc">==</span> <span class="st">&quot;w&quot;</span> <span class="sc">~</span> <span class="st">&quot;General&quot;</span></span>
-<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">.after =</span> paper</span>
-<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>  ) </span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This will create copies of each dataset into my own folder for the online portfolio</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>papers <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">write_csv</span>(<span class="st">&quot;data/tidy_tuesday/papers.csv&quot;</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>authors <span class="sc">%&gt;%</span> </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/tidy_tuesday/authors.csv&quot;</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>programs <span class="sc">%&gt;%</span> </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/tidy_tuesday/programs.csv&quot;</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>paper_authors <span class="sc">%&gt;%</span> </span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&#39;data/tidy_tuesday/paper_authors.csv&#39;</span>)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>paper_programs <span class="sc">%&gt;%</span> </span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/tidy_tuesday/paper_programs.csv&quot;</span>)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="co">#We are joining the datasets into one</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>joined_df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(papers, paper_authors) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(authors) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(paper_programs) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(programs)<span class="sc">%&gt;%</span> </span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">catalogue_group =</span> <span class="fu">str_sub</span>(paper, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">catalogue_group =</span> <span class="fu">case_when</span>(</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>      catalogue_group <span class="sc">==</span> <span class="st">&quot;h&quot;</span> <span class="sc">~</span> <span class="st">&quot;Historical&quot;</span>,</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>      catalogue_group <span class="sc">==</span> <span class="st">&quot;t&quot;</span> <span class="sc">~</span> <span class="st">&quot;Technical&quot;</span>,</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>      catalogue_group <span class="sc">==</span> <span class="st">&quot;w&quot;</span> <span class="sc">~</span> <span class="st">&quot;General&quot;</span></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">.after =</span> paper</span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>  ) </span></code></pre></div>
 <pre><code>## Joining, by = &quot;paper&quot;</code></pre>
 <pre><code>## Joining, by = &quot;author&quot;</code></pre>
 <pre><code>## Joining, by = &quot;paper&quot;</code></pre>
 <pre><code>## Joining, by = &quot;program&quot;</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>joined_df <span class="sc">%&gt;%</span> </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/tidy_tuesday/joined_df.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>joined_df <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/tidy_tuesday/joined_df.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="now-that-we-have-the-data-read-in-time-to-explore-the-data" class="section level2">
 <h2><strong>Now that we have the data read in, time to explore the data</strong></h2>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Gives a snapshot of the data</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(joined_df)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Gives a snapshot of the data</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(joined_df)</span></code></pre></div>
 <pre><code>## Rows: 130,081
 ## Columns: 12
 ## $ paper            &lt;chr&gt; &quot;w0001&quot;, &quot;w0002&quot;, &quot;w0003&quot;, &quot;w0004&quot;, &quot;w0005&quot;, &quot;w0006&quot;,~
@@ -497,14 +492,14 @@ $(document).ready(function () {
 ## $ program          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N~
 ## $ program_desc     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N~
 ## $ program_category &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N~</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Summarizing variables to see the distribution of some variables</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.factor</span>(joined_df<span class="sc">$</span>catalogue_group))</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Summarizing variables to see the distribution of some variables</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.factor</span>(joined_df<span class="sc">$</span>catalogue_group))</span></code></pre></div>
 <pre><code>##    General Historical  Technical 
 ##     129126        225        730</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.factor</span>(joined_df<span class="sc">$</span>program_category))</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.factor</span>(joined_df<span class="sc">$</span>program_category))</span></code></pre></div>
 <pre><code>##             Finance Macro/International               Micro                NA&#39;s 
 ##               12957               35929               79679                1516</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.factor</span>(joined_df<span class="sc">$</span>program_desc))</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.factor</span>(joined_df<span class="sc">$</span>program_desc))</span></code></pre></div>
 <pre><code>##                                  Asset Pricing 
 ##                                           6804 
 ##                                       Children 
@@ -549,7 +544,7 @@ $(document).ready(function () {
 ##                                            986 
 ##                                           NA&#39;s 
 ##                                            530</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(joined_df<span class="sc">$</span>year)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(joined_df<span class="sc">$</span>year)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1973    2005    2013    2010    2018    2021</code></pre>
 <p>From looking at the data, almost all of the papers are under the general catalogue group. We can also see that most papers are within the Micro program with some missing data.</p>
@@ -558,21 +553,21 @@ $(document).ready(function () {
 </div>
 <div id="visualization-of-decades" class="section level2">
 <h2><strong>Visualization of Decades</strong></h2>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating a new variable that categorizes the years</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> joined_df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year_cat=</span> <span class="fu">ifelse</span>(year<span class="sc">&gt;=</span><span class="dv">1973</span> <span class="sc">&amp;</span> year<span class="sc">&lt;</span><span class="dv">1980</span>, <span class="st">&quot;70&#39;s&quot;</span>, <span class="fu">ifelse</span>(year<span class="sc">&gt;=</span><span class="dv">1980</span> <span class="sc">&amp;</span> year<span class="sc">&lt;</span><span class="dv">1990</span>, <span class="st">&quot;80&#39;s&quot;</span>,<span class="fu">ifelse</span>(year<span class="sc">&gt;=</span><span class="dv">1990</span> <span class="sc">&amp;</span> year<span class="sc">&lt;</span><span class="dv">2000</span>, <span class="st">&quot;90&#39;s&quot;</span>, <span class="fu">ifelse</span>(year<span class="sc">&gt;=</span><span class="dv">2000</span> <span class="sc">&amp;</span> year<span class="sc">&lt;</span><span class="dv">2010</span>, <span class="st">&quot;2000&#39;s&quot;</span>, <span class="fu">ifelse</span>(year<span class="sc">&gt;=</span><span class="dv">2010</span>, <span class="st">&quot;2010&#39;s-2021&quot;</span>, <span class="st">&quot;&quot;</span>)))))) </span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co">#This makes the year categories factors so there is a distinct order</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>data2<span class="sc">$</span>year_cat <span class="ot">=</span> <span class="fu">factor</span>(data2<span class="sc">$</span>year_cat, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;2010&#39;s-2021&quot;</span>, <span class="st">&quot;2000&#39;s&quot;</span>, <span class="st">&quot;90&#39;s&quot;</span>, <span class="st">&quot;80&#39;s&quot;</span>, <span class="st">&quot;70&#39;s&quot;</span>))</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Summarizing the new variable</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.factor</span>(data2<span class="sc">$</span>year_cat))</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating a new variable that categorizes the years</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> joined_df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year_cat=</span> <span class="fu">ifelse</span>(year<span class="sc">&gt;=</span><span class="dv">1973</span> <span class="sc">&amp;</span> year<span class="sc">&lt;</span><span class="dv">1980</span>, <span class="st">&quot;70&#39;s&quot;</span>, <span class="fu">ifelse</span>(year<span class="sc">&gt;=</span><span class="dv">1980</span> <span class="sc">&amp;</span> year<span class="sc">&lt;</span><span class="dv">1990</span>, <span class="st">&quot;80&#39;s&quot;</span>,<span class="fu">ifelse</span>(year<span class="sc">&gt;=</span><span class="dv">1990</span> <span class="sc">&amp;</span> year<span class="sc">&lt;</span><span class="dv">2000</span>, <span class="st">&quot;90&#39;s&quot;</span>, <span class="fu">ifelse</span>(year<span class="sc">&gt;=</span><span class="dv">2000</span> <span class="sc">&amp;</span> year<span class="sc">&lt;</span><span class="dv">2010</span>, <span class="st">&quot;2000&#39;s&quot;</span>, <span class="fu">ifelse</span>(year<span class="sc">&gt;=</span><span class="dv">2010</span>, <span class="st">&quot;2010&#39;s-2021&quot;</span>, <span class="st">&quot;&quot;</span>)))))) </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co">#This makes the year categories factors so there is a distinct order</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>data2<span class="sc">$</span>year_cat <span class="ot">=</span> <span class="fu">factor</span>(data2<span class="sc">$</span>year_cat, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;2010&#39;s-2021&quot;</span>, <span class="st">&quot;2000&#39;s&quot;</span>, <span class="st">&quot;90&#39;s&quot;</span>, <span class="st">&quot;80&#39;s&quot;</span>, <span class="st">&quot;70&#39;s&quot;</span>))</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Summarizing the new variable</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.factor</span>(data2<span class="sc">$</span>year_cat))</span></code></pre></div>
 <pre><code>## 2010&#39;s-2021      2000&#39;s        90&#39;s        80&#39;s        70&#39;s 
 ##       80573       31403       11231        6247         627</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#barplot of programs with the distribution of years within each program</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>data2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(program_desc)) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span><span class="fu">as.factor</span>(year_cat), <span class="at">x=</span>forcats<span class="sc">::</span><span class="fu">fct_infreq</span>(program_desc))) <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Stacked Barplot of Counts of Programs Written </span><span class="sc">\n</span><span class="st"> (by Decade)&quot;</span>, <span class="at">fill=</span><span class="st">&quot;Decade&quot;</span>) <span class="sc">+</span><span class="fu">xlab</span>(<span class="st">&quot;Programs&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#barplot of programs with the distribution of years within each program</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>data2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(program_desc)) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span><span class="fu">as.factor</span>(year_cat), <span class="at">x=</span>forcats<span class="sc">::</span><span class="fu">fct_infreq</span>(program_desc))) <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Stacked Barplot of Counts of Programs Written </span><span class="sc">\n</span><span class="st"> (by Decade)&quot;</span>, <span class="at">fill=</span><span class="st">&quot;Decade&quot;</span>) <span class="sc">+</span><span class="fu">xlab</span>(<span class="st">&quot;Programs&quot;</span>) </span></code></pre></div>
 <p><img src="tidytuesday_files/figure-html/some%20visualization%20of%20year-1.png" width="672" /></p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#A proportion table showing the proportions of program categories by decade</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data2<span class="sc">$</span>program_category, data2<span class="sc">$</span>year_cat), <span class="at">margin=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#A proportion table showing the proportions of program categories by decade</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data2<span class="sc">$</span>program_category, data2<span class="sc">$</span>year_cat), <span class="at">margin=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##                      
 ##                        2010&#39;s-2021       2000&#39;s         90&#39;s         80&#39;s
 ##   Finance             0.1016085623 0.1230863245 0.0911801916 0.0003228931
@@ -589,14 +584,14 @@ $(document).ready(function () {
 <div id="more-exploration-plots" class="section level2">
 <h2><strong>More Exploration Plots</strong></h2>
 <p>After looking at decades, I want to look at just program information.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Barplot of program categories</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>data2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(program_category)) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(program_category)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Barplot of program categories</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>data2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(program_category)) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(program_category)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="tidytuesday_files/figure-html/more%20visualization%20of%20programs-1.png" width="672" /></p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Stacked Barplot of programs by catalogue group</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>data2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(program_desc)) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span>catalogue_group, <span class="at">x=</span>forcats<span class="sc">::</span><span class="fu">fct_infreq</span>(program_desc))) <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Stacked Barplot of Counts of Programs Written </span><span class="sc">\n</span><span class="st"> (by Catalogue)&quot;</span>, <span class="at">fill=</span><span class="st">&quot;Catalogue&quot;</span>) <span class="sc">+</span><span class="fu">xlab</span>(<span class="st">&quot;Programs&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Stacked Barplot of programs by catalogue group</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>data2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(program_desc)) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span>catalogue_group, <span class="at">x=</span>forcats<span class="sc">::</span><span class="fu">fct_infreq</span>(program_desc))) <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Stacked Barplot of Counts of Programs Written </span><span class="sc">\n</span><span class="st"> (by Catalogue)&quot;</span>, <span class="at">fill=</span><span class="st">&quot;Catalogue&quot;</span>) <span class="sc">+</span><span class="fu">xlab</span>(<span class="st">&quot;Programs&quot;</span>) </span></code></pre></div>
 <p><img src="tidytuesday_files/figure-html/more%20visualization%20of%20programs-2.png" width="672" /></p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Proportions table of program category and catalogue group, margined by catalogue</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data2<span class="sc">$</span>program_category, data2<span class="sc">$</span>catalogue_group), <span class="at">margin=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Proportions table of program category and catalogue group, margined by catalogue</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data2<span class="sc">$</span>program_category, data2<span class="sc">$</span>catalogue_group), <span class="at">margin=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##                      
 ##                          General Historical  Technical
 ##   Finance             0.10090645 0.00000000 0.11434511
@@ -608,11 +603,11 @@ $(document).ready(function () {
 </div>
 <div id="distinct-papers" class="section level2">
 <h2><strong>Distinct Papers</strong></h2>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creates a new dataset only including distinct papers and no duplicates of papers.</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>distinct_paper <span class="ot">&lt;-</span> data2 <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(paper, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Shows a snapshot of the dataset</span></span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(distinct_paper)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creates a new dataset only including distinct papers and no duplicates of papers.</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>distinct_paper <span class="ot">&lt;-</span> data2 <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(paper, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Shows a snapshot of the dataset</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(distinct_paper)</span></code></pre></div>
 <pre><code>## Rows: 29,434
 ## Columns: 13
 ## $ paper            &lt;chr&gt; &quot;w0001&quot;, &quot;w0002&quot;, &quot;w0003&quot;, &quot;w0004&quot;, &quot;w0005&quot;, &quot;w0006&quot;,~
@@ -628,8 +623,8 @@ $(document).ready(function () {
 ## $ program_desc     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N~
 ## $ program_category &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N~
 ## $ year_cat         &lt;fct&gt; 70&#39;s, 70&#39;s, 70&#39;s, 70&#39;s, 70&#39;s, 70&#39;s, 70&#39;s, 70&#39;s, 70&#39;s,~</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Shows the top authors who has written/contributed to the most papers</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>distinct_paper <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Count))</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Shows the top authors who has written/contributed to the most papers</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>distinct_paper <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Count))</span></code></pre></div>
 <pre><code>## # A tibble: 3,402 x 2
 ##    name               Count
 ##    &lt;chr&gt;              &lt;int&gt;
@@ -644,11 +639,11 @@ $(document).ready(function () {
 ##  9 Sebastian Edwards    120
 ## 10 Michael D Bordo      119
 ## # ... with 3,392 more rows</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Stacked barplot of programs by year with only looking at single papers.</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>distinct_paper <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(program_desc)) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span><span class="fu">as.factor</span>(year_cat), <span class="at">x=</span>forcats<span class="sc">::</span><span class="fu">fct_infreq</span>(program_desc))) <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Stacked Barplot of Counts of Programs Written </span><span class="sc">\n</span><span class="st"> (by Year for Distinct Papers)&quot;</span>, <span class="at">fill=</span><span class="st">&quot;Decade&quot;</span>) <span class="sc">+</span><span class="fu">xlab</span>(<span class="st">&quot;Programs&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Stacked barplot of programs by year with only looking at single papers.</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>distinct_paper <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(program_desc)) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span><span class="fu">as.factor</span>(year_cat), <span class="at">x=</span>forcats<span class="sc">::</span><span class="fu">fct_infreq</span>(program_desc))) <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Stacked Barplot of Counts of Programs Written </span><span class="sc">\n</span><span class="st"> (by Year for Distinct Papers)&quot;</span>, <span class="at">fill=</span><span class="st">&quot;Decade&quot;</span>) <span class="sc">+</span><span class="fu">xlab</span>(<span class="st">&quot;Programs&quot;</span>) </span></code></pre></div>
 <p><img src="tidytuesday_files/figure-html/visualization%20on%20distinct%20papers-1.png" width="672" /></p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Shows how many papers were written per decade</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(distinct_paper<span class="sc">$</span>year_cat)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Shows how many papers were written per decade</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(distinct_paper<span class="sc">$</span>year_cat)</span></code></pre></div>
 <pre><code>## 
 ## 2010&#39;s-2021      2000&#39;s        90&#39;s        80&#39;s        70&#39;s 
 ##       13345        8296        4489        2908         396</code></pre>

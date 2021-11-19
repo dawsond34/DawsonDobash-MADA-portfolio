@@ -429,16 +429,16 @@ $(document).ready(function () {
 <pre><code>## # A tibble: 38 x 5
 ##    term                 estimate std.error statistic p.value
 ##    &lt;chr&gt;                   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-##  1 (Intercept)            -0.650     9.34    -0.0696  0.945 
-##  2 SwollenLymphNodesYes   -0.212     0.238   -0.892   0.372 
-##  3 ChestCongestionYes     -0.174     0.261   -0.664   0.506 
-##  4 ChillsSweatsYes         0.230     0.344    0.668   0.504 
-##  5 NasalCongestionYes      0.380     0.307    1.24    0.216 
-##  6 CoughYNYes             -0.465     0.580   -0.801   0.423 
-##  7 SneezeYes               0.317     0.256    1.24    0.216 
-##  8 FatigueYes              0.324     0.442    0.733   0.463 
-##  9 SubjectiveFeverYes      0.614     0.267    2.30    0.0216
-## 10 HeadacheYes             0.803     0.382    2.10    0.0354
+##  1 (Intercept)             1.70      9.08      0.188  0.851 
+##  2 SwollenLymphNodesYes   -0.179     0.235    -0.761  0.447 
+##  3 ChestCongestionYes      0.214     0.253     0.846  0.397 
+##  4 ChillsSweatsYes         0.169     0.334     0.506  0.613 
+##  5 NasalCongestionYes      0.673     0.302     2.23   0.0260
+##  6 CoughYNYes             -0.297     0.612    -0.485  0.628 
+##  7 SneezeYes               0.130     0.254     0.512  0.609 
+##  8 FatigueYes             -0.114     0.456    -0.249  0.803 
+##  9 SubjectiveFeverYes      0.119     0.273     0.434  0.664 
+## 10 HeadacheYes             0.258     0.347     0.742  0.458 
 ## # ... with 28 more rows</code></pre>
 </div>
 <div id="evaluating-model" class="section level2">
@@ -456,11 +456,11 @@ $(document).ready(function () {
 ##  3 No         
 ##  4 No         
 ##  5 No         
-##  6 Yes        
-##  7 No         
+##  6 No         
+##  7 Yes        
 ##  8 No         
-##  9 Yes        
-## 10 No         
+##  9 No         
+## 10 Yes        
 ## # ... with 173 more rows</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This is also doing the same thing as the predict function but it is showing the prediction proportions at each observation</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Nausea_aug1 <span class="ot">=</span> <span class="fu">augment</span>(Nausea_fit, test)</span></code></pre></div>
@@ -479,7 +479,7 @@ $(document).ready(function () {
 <pre><code>## # A tibble: 1 x 3
 ##   .metric .estimator .estimate
 ##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
-## 1 roc_auc binary         0.673</code></pre>
+## 1 roc_auc binary         0.733</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Using the training data set</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Nausea_aug2 <span class="ot">=</span> <span class="fu">augment</span>(Nausea_fit, training)</span></code></pre></div>
 <pre><code>## Warning in predict.lm(object, newdata, se.fit, scale = 1, type = if (type == :
@@ -493,7 +493,7 @@ $(document).ready(function () {
 <pre><code>## # A tibble: 1 x 3
 ##   .metric .estimator .estimate
 ##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
-## 1 roc_auc binary         0.796</code></pre>
+## 1 roc_auc binary         0.784</code></pre>
 <p>After finding out the roc value of both which hovers around the 0.75 range, this means the model will be useful and possibly good.</p>
 </div>
 <div id="workflow-creation-and-fitting-for-main-outcome-runny-nose" class="section level2">
@@ -511,10 +511,10 @@ $(document).ready(function () {
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Looking at the details of this fitted model</span></span>
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>Nausea_fit2 <span class="sc">%&gt;%</span> <span class="fu">extract_fit_parsnip</span>() <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 5
-##   term         estimate std.error statistic   p.value
-##   &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-## 1 (Intercept)   -0.703      0.170    -4.14  0.0000341
-## 2 RunnyNoseYes   0.0440     0.200     0.219 0.826</code></pre>
+##   term         estimate std.error statistic    p.value
+##   &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+## 1 (Intercept)   -0.749      0.168    -4.45  0.00000851
+## 2 RunnyNoseYes   0.0639     0.200     0.319 0.749</code></pre>
 </div>
 <div id="evaluating-model-1" class="section level2">
 <h2>Evaluating Model</h2>
@@ -548,7 +548,7 @@ $(document).ready(function () {
 <pre><code>## # A tibble: 1 x 3
 ##   .metric .estimator .estimate
 ##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
-## 1 roc_auc binary         0.508</code></pre>
+## 1 roc_auc binary         0.498</code></pre>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Using the training data set</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>Nausea_aug4 <span class="ot">=</span> <span class="fu">augment</span>(Nausea_fit2, training)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>Nausea_aug4 <span class="sc">%&gt;%</span> <span class="fu">roc_curve</span>(<span class="at">truth =</span> Nausea, .pred_Yes, <span class="at">event_level =</span> <span class="st">&quot;second&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>()</span></code></pre></div>
@@ -557,7 +557,7 @@ $(document).ready(function () {
 <pre><code>## # A tibble: 1 x 3
 ##   .metric .estimator .estimate
 ##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
-## 1 roc_auc binary         0.504</code></pre>
+## 1 roc_auc binary         0.507</code></pre>
 <p>We can see that if we only use runny nose as our predictor, the roc has a value around 0.5 which mean the model is not a good fit.</p>
 <div id="section" class="section level72">
 <p class="heading"></p>
@@ -584,73 +584,73 @@ $(document).ready(function () {
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(training)</span></code></pre></div>
 <pre><code>## Rows: 547
 ## Columns: 32
-## $ SwollenLymphNodes &lt;fct&gt; No, Yes, No, No, No, No, No, No, No, No, No, Yes, Ye~
-## $ ChestCongestion   &lt;fct&gt; Yes, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes,~
-## $ ChillsSweats      &lt;fct&gt; Yes, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, No, ~
-## $ NasalCongestion   &lt;fct&gt; Yes, No, No, Yes, Yes, Yes, Yes, No, No, No, Yes, Ye~
-## $ CoughYN           &lt;fct&gt; Yes, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes~
-## $ Sneeze            &lt;fct&gt; Yes, Yes, Yes, Yes, No, No, No, No, Yes, No, No, No,~
+## $ SwollenLymphNodes &lt;fct&gt; No, No, No, No, No, Yes, Yes, No, Yes, No, No, Yes, ~
+## $ ChestCongestion   &lt;fct&gt; No, Yes, No, No, No, Yes, Yes, No, Yes, Yes, Yes, Ye~
+## $ ChillsSweats      &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes~
+## $ NasalCongestion   &lt;fct&gt; No, Yes, No, No, Yes, Yes, Yes, No, Yes, Yes, No, Ye~
+## $ CoughYN           &lt;fct&gt; No, Yes, Yes, Yes, No, Yes, Yes, No, Yes, Yes, Yes, ~
+## $ Sneeze            &lt;fct&gt; No, Yes, No, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, ~
 ## $ Fatigue           &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
-## $ SubjectiveFever   &lt;fct&gt; Yes, No, Yes, Yes, Yes, No, Yes, Yes, Yes, No, Yes, ~
-## $ Headache          &lt;fct&gt; Yes, No, Yes, Yes, Yes, No, Yes, No, Yes, Yes, No, Y~
-## $ Weakness          &lt;fct&gt; Mild, Mild, Moderate, Moderate, Moderate, Mild, Mild~
-## $ WeaknessYN        &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
-## $ CoughIntensity    &lt;fct&gt; Moderate, None, Moderate, Moderate, Severe, Moderate~
-## $ CoughYN2          &lt;fct&gt; Yes, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes~
-## $ Myalgia           &lt;fct&gt; Mild, None, Severe, Mild, Mild, Mild, Moderate, Mild~
-## $ MyalgiaYN         &lt;fct&gt; Yes, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes,~
-## $ RunnyNose         &lt;fct&gt; Yes, No, Yes, No, No, No, Yes, No, Yes, Yes, No, No,~
-## $ AbPain            &lt;fct&gt; No, No, No, No, No, No, No, No, Yes, No, No, No, Yes~
-## $ ChestPain         &lt;fct&gt; No, Yes, Yes, No, Yes, No, No, No, Yes, Yes, Yes, No~
-## $ Diarrhea          &lt;fct&gt; No, No, No, No, Yes, No, No, No, No, No, No, No, No,~
-## $ EyePn             &lt;fct&gt; No, No, No, No, Yes, No, No, No, No, No, No, No, No,~
-## $ Insomnia          &lt;fct&gt; No, No, Yes, No, No, No, No, No, No, Yes, Yes, No, Y~
-## $ ItchyEye          &lt;fct&gt; Yes, No, No, No, No, No, Yes, No, No, No, No, No, No~
-## $ Nausea            &lt;fct&gt; No, No, Yes, No, No, No, No, Yes, Yes, No, No, No, Y~
-## $ EarPn             &lt;fct&gt; No, Yes, No, No, No, No, No, No, No, No, No, No, No,~
+## $ SubjectiveFever   &lt;fct&gt; No, Yes, No, No, No, Yes, No, Yes, Yes, Yes, Yes, Ye~
+## $ Headache          &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ Weakness          &lt;fct&gt; Moderate, Moderate, Mild, Severe, Moderate, Mild, Mi~
+## $ WeaknessYN        &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes~
+## $ CoughIntensity    &lt;fct&gt; Mild, Severe, Moderate, Moderate, None, Moderate, Mo~
+## $ CoughYN2          &lt;fct&gt; Yes, Yes, Yes, Yes, No, Yes, Yes, No, Yes, Yes, Yes,~
+## $ Myalgia           &lt;fct&gt; Moderate, Severe, Moderate, Mild, Mild, Mild, Modera~
+## $ MyalgiaYN         &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ RunnyNose         &lt;fct&gt; No, Yes, No, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, ~
+## $ AbPain            &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, Yes, No, No,~
+## $ ChestPain         &lt;fct&gt; No, Yes, No, No, No, No, No, Yes, No, Yes, Yes, No, ~
+## $ Diarrhea          &lt;fct&gt; Yes, No, No, No, No, No, No, No, No, No, No, No, No,~
+## $ EyePn             &lt;fct&gt; No, No, Yes, No, No, No, No, No, No, Yes, No, No, No~
+## $ Insomnia          &lt;fct&gt; Yes, Yes, No, No, Yes, No, Yes, Yes, Yes, No, No, No~
+## $ ItchyEye          &lt;fct&gt; No, No, Yes, No, Yes, Yes, No, No, No, No, No, No, N~
+## $ Nausea            &lt;fct&gt; No, Yes, No, No, No, No, No, Yes, Yes, No, Yes, No, ~
+## $ EarPn             &lt;fct&gt; No, No, No, Yes, No, No, No, No, No, No, No, Yes, No~
 ## $ Hearing           &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, No, ~
-## $ Pharyngitis       &lt;fct&gt; No, Yes, Yes, No, No, No, Yes, Yes, Yes, Yes, Yes, Y~
-## $ Breathless        &lt;fct&gt; No, Yes, No, Yes, Yes, No, No, No, Yes, Yes, No, No,~
-## $ ToothPn           &lt;fct&gt; No, No, No, No, No, No, Yes, No, No, No, No, No, No,~
+## $ Pharyngitis       &lt;fct&gt; Yes, No, Yes, Yes, Yes, Yes, Yes, No, Yes, No, Yes, ~
+## $ Breathless        &lt;fct&gt; No, No, No, No, No, No, No, No, No, Yes, Yes, No, No~
+## $ ToothPn           &lt;fct&gt; No, No, No, No, No, No, No, Yes, No, No, No, Yes, No~
 ## $ Vision            &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, No, ~
-## $ Vomit             &lt;fct&gt; No, No, Yes, Yes, No, No, No, No, No, No, No, No, Ye~
-## $ Wheeze            &lt;fct&gt; No, No, Yes, Yes, Yes, No, No, No, No, No, Yes, No, ~
-## $ BodyTemp          &lt;dbl&gt; 98.4, 97.8, 98.7, 98.3, 102.0, 98.3, 101.6, 98.7, 98~</code></pre>
+## $ Vomit             &lt;fct&gt; No, No, No, No, No, No, No, No, No, Yes, No, No, No,~
+## $ Wheeze            &lt;fct&gt; No, No, Yes, No, No, Yes, No, No, Yes, Yes, No, No, ~
+## $ BodyTemp          &lt;dbl&gt; 98.2, 99.0, 98.1, 102.6, 98.1, 98.2, 99.0, 98.7, 99.~</code></pre>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(test)</span></code></pre></div>
 <pre><code>## Rows: 183
 ## Columns: 32
-## $ SwollenLymphNodes &lt;fct&gt; No, No, Yes, Yes, Yes, No, Yes, Yes, Yes, No, Yes, N~
-## $ ChestCongestion   &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, No, Yes,~
-## $ ChillsSweats      &lt;fct&gt; Yes, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes,~
-## $ NasalCongestion   &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, No, Yes,~
-## $ CoughYN           &lt;fct&gt; Yes, Yes, No, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes,~
-## $ Sneeze            &lt;fct&gt; Yes, No, No, Yes, Yes, No, Yes, Yes, Yes, No, Yes, N~
+## $ SwollenLymphNodes &lt;fct&gt; Yes, Yes, Yes, Yes, No, Yes, No, Yes, Yes, No, Yes, ~
+## $ ChestCongestion   &lt;fct&gt; Yes, No, Yes, Yes, Yes, Yes, No, Yes, No, No, Yes, Y~
+## $ ChillsSweats      &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ NasalCongestion   &lt;fct&gt; Yes, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes~
+## $ CoughYN           &lt;fct&gt; Yes, No, Yes, Yes, Yes, Yes, No, Yes, No, Yes, Yes, ~
+## $ Sneeze            &lt;fct&gt; Yes, No, No, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes, ~
 ## $ Fatigue           &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
-## $ SubjectiveFever   &lt;fct&gt; Yes, No, No, No, Yes, Yes, Yes, No, Yes, Yes, Yes, Y~
-## $ Headache          &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes~
-## $ Weakness          &lt;fct&gt; Severe, Moderate, Mild, Mild, Moderate, Mild, Modera~
+## $ SubjectiveFever   &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes~
+## $ Headache          &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes~
+## $ Weakness          &lt;fct&gt; Severe, Moderate, Moderate, Severe, Severe, Mild, Se~
 ## $ WeaknessYN        &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
-## $ CoughIntensity    &lt;fct&gt; Moderate, Moderate, None, Mild, Moderate, Severe, Mi~
-## $ CoughYN2          &lt;fct&gt; Yes, Yes, No, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes,~
-## $ Myalgia           &lt;fct&gt; Severe, Mild, Moderate, None, Mild, Mild, Severe, Mi~
-## $ MyalgiaYN         &lt;fct&gt; Yes, Yes, Yes, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes~
-## $ RunnyNose         &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, No, No, Yes, Yes, No, Yes, ~
-## $ AbPain            &lt;fct&gt; No, No, No, No, No, Yes, No, No, Yes, No, No, No, No~
-## $ ChestPain         &lt;fct&gt; No, No, No, Yes, Yes, Yes, No, Yes, No, No, No, No, ~
+## $ CoughIntensity    &lt;fct&gt; Moderate, None, Moderate, Severe, Moderate, Moderate~
+## $ CoughYN2          &lt;fct&gt; Yes, No, Yes, Yes, Yes, Yes, No, Yes, No, Yes, Yes, ~
+## $ Myalgia           &lt;fct&gt; Severe, Mild, Moderate, Severe, Severe, Moderate, Mo~
+## $ MyalgiaYN         &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ RunnyNose         &lt;fct&gt; Yes, No, Yes, Yes, Yes, Yes, No, No, Yes, No, Yes, Y~
+## $ AbPain            &lt;fct&gt; No, No, No, No, No, No, Yes, No, No, No, No, No, No,~
+## $ ChestPain         &lt;fct&gt; No, No, No, Yes, No, No, No, No, Yes, No, No, Yes, N~
 ## $ Diarrhea          &lt;fct&gt; No, No, No, No, No, Yes, No, No, No, No, No, No, No,~
-## $ EyePn             &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, Yes, No,~
-## $ Insomnia          &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, No, No, No, Yes, No, No, Ye~
-## $ ItchyEye          &lt;fct&gt; No, No, No, No, No, No, No, No, Yes, No, No, Yes, No~
-## $ Nausea            &lt;fct&gt; No, Yes, No, Yes, No, No, No, No, No, No, No, No, Ye~
-## $ EarPn             &lt;fct&gt; No, No, Yes, Yes, Yes, No, No, Yes, Yes, No, Yes, No~
-## $ Hearing           &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, Yes, No,~
-## $ Pharyngitis       &lt;fct&gt; No, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, ~
-## $ Breathless        &lt;fct&gt; No, Yes, No, Yes, No, No, Yes, No, No, No, No, No, Y~
-## $ ToothPn           &lt;fct&gt; No, No, No, Yes, No, No, No, No, Yes, No, No, No, No~
-## $ Vision            &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, No, ~
-## $ Vomit             &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, Yes,~
-## $ Wheeze            &lt;fct&gt; No, No, No, Yes, No, Yes, No, No, No, No, Yes, Yes, ~
-## $ BodyTemp          &lt;dbl&gt; 98.4, 97.8, 98.1, 98.1, 100.3, 99.5, 100.9, 98.7, 99~</code></pre>
+## $ EyePn             &lt;fct&gt; No, Yes, No, No, No, Yes, No, No, No, No, No, No, No~
+## $ Insomnia          &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, No, Yes, No, No, Yes, No, Y~
+## $ ItchyEye          &lt;fct&gt; No, No, No, Yes, No, Yes, No, No, No, No, No, No, No~
+## $ Nausea            &lt;fct&gt; Yes, Yes, Yes, No, Yes, Yes, Yes, No, No, Yes, Yes, ~
+## $ EarPn             &lt;fct&gt; Yes, No, No, No, No, No, Yes, No, Yes, No, No, Yes, ~
+## $ Hearing           &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, No, ~
+## $ Pharyngitis       &lt;fct&gt; Yes, Yes, No, Yes, No, Yes, Yes, Yes, Yes, Yes, Yes,~
+## $ Breathless        &lt;fct&gt; No, No, No, Yes, No, No, Yes, Yes, No, No, No, Yes, ~
+## $ ToothPn           &lt;fct&gt; No, No, Yes, No, No, Yes, Yes, No, No, No, No, No, N~
+## $ Vision            &lt;fct&gt; No, No, No, No, No, No, Yes, No, No, No, No, No, No,~
+## $ Vomit             &lt;fct&gt; No, No, No, No, No, No, No, No, No, Yes, No, Yes, No~
+## $ Wheeze            &lt;fct&gt; Yes, No, No, Yes, No, No, Yes, No, No, Yes, No, Yes,~
+## $ BodyTemp          &lt;dbl&gt; 98.8, 100.5, 98.5, 101.9, 99.2, 98.2, 97.8, 100.9, 9~</code></pre>
 </div>
 <div id="making-a-new-recipe" class="section level4">
 <h4>Making a new recipe</h4>
@@ -681,16 +681,16 @@ $(document).ready(function () {
 <pre><code>## # A tibble: 38 x 5
 ##    term                 estimate std.error statistic  p.value
 ##    &lt;chr&gt;                   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-##  1 (Intercept)          97.9         0.359  272.     0       
-##  2 SwollenLymphNodesYes -0.0633      0.108   -0.587  0.557   
-##  3 ChestCongestionYes   -0.00905     0.115   -0.0789 0.937   
-##  4 ChillsSweatsYes       0.211       0.149    1.42   0.157   
-##  5 NasalCongestionYes   -0.246       0.134   -1.83   0.0672  
-##  6 CoughYNYes            0.163       0.271    0.603  0.547   
-##  7 SneezeYes            -0.367       0.116   -3.16   0.00165 
-##  8 FatigueYes            0.240       0.182    1.32   0.187   
-##  9 SubjectiveFeverYes    0.404       0.119    3.40   0.000716
-## 10 HeadacheYes          -0.125       0.150   -0.833  0.405   
+##  1 (Intercept)           97.9        0.361   271.    0       
+##  2 SwollenLymphNodesYes  -0.180      0.111    -1.62  0.106   
+##  3 ChestCongestionYes     0.0555     0.117     0.474 0.635   
+##  4 ChillsSweatsYes        0.218      0.151     1.45  0.148   
+##  5 NasalCongestionYes    -0.111      0.135    -0.824 0.410   
+##  6 CoughYNYes             0.406      0.294     1.38  0.168   
+##  7 SneezeYes             -0.421      0.121    -3.49  0.000522
+##  8 FatigueYes             0.306      0.196     1.56  0.119   
+##  9 SubjectiveFeverYes     0.393      0.127     3.10  0.00202 
+## 10 HeadacheYes            0.0713     0.151     0.472 0.637   
 ## # ... with 28 more rows</code></pre>
 <p>Now that we have a fitted object, we will apply it to the test data and predict some values.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Showing the prediction proportions at each observation</span></span>
@@ -705,7 +705,7 @@ $(document).ready(function () {
 <pre><code>## # A tibble: 1 x 3
 ##   .metric .estimator .estimate
 ##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
-## 1 rmse    standard        1.17</code></pre>
+## 1 rmse    standard        1.07</code></pre>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Using the training data set</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>BT_aug2 <span class="ot">=</span> <span class="fu">augment</span>(BT_fit, training) <span class="co">#updated model for training</span></span></code></pre></div>
 <pre><code>## Warning in predict.lm(object = object$fit, newdata = new_data, type =
@@ -714,7 +714,7 @@ $(document).ready(function () {
 <pre><code>## # A tibble: 1 x 3
 ##   .metric .estimator .estimate
 ##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
-## 1 rmse    standard        1.11</code></pre>
+## 1 rmse    standard        1.14</code></pre>
 <p>RMSE using test data is estimated at 1.16 RMSE using training data is estimated at 1.11</p>
 </div>
 </div>
@@ -741,8 +741,8 @@ $(document).ready(function () {
 <pre><code>## # A tibble: 2 x 5
 ##   term         estimate std.error statistic p.value
 ##   &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-## 1 (Intercept)    99.0      0.0949   1044.     0    
-## 2 RunnyNoseYes   -0.178    0.112      -1.58   0.114</code></pre>
+## 1 (Intercept)    99.2      0.0952   1042.   0      
+## 2 RunnyNoseYes   -0.299    0.113      -2.63 0.00873</code></pre>
 <p>Now that we have a fitted object, we will apply it to the test data and predict some values.</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Same as predict function but shows the prediction proportions at each observation</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>BT.RN_aug <span class="ot">=</span> <span class="fu">augment</span>(BT.RN_fit, test)</span>
@@ -755,14 +755,14 @@ $(document).ready(function () {
 <pre><code>## # A tibble: 1 x 3
 ##   .metric .estimator .estimate
 ##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
-## 1 rmse    standard        1.20</code></pre>
+## 1 rmse    standard        1.12</code></pre>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Using the training data set</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>BT.RN_aug2 <span class="ot">=</span> <span class="fu">augment</span>(BT.RN_fit, training)</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>BT.RN_aug2 <span class="sc">%&gt;%</span> <span class="fu">rmse</span>(<span class="at">truth =</span> BodyTemp, .pred)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
 ##   .metric .estimator .estimate
 ##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
-## 1 rmse    standard        1.19</code></pre>
+## 1 rmse    standard        1.21</code></pre>
 <p>RMSE is estimated as 1.08 for the test data model. RMSE is estimated 1.22 for the training data model.</p>
 </div>
 <div id="summary" class="section level4">
